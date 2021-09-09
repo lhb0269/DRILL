@@ -1,0 +1,26 @@
+import turtle
+a=0
+r=90
+turtle.penup()
+turtle.goto(-200,-200)
+turtle.pendown()
+while(a<4):
+    turtle.forward(500)
+    turtle.left(r)
+    a=a+1
+a=1
+while(a<5):
+    turtle.penup()
+    turtle.goto(-200,-200+a*100)
+    turtle.pendown()
+    turtle.forward(500)
+    a=a+1
+a=1
+turtle.right(90)
+while(a<5):
+    turtle.penup()
+    turtle.goto(-200+a*100,300)
+    turtle.pendown()
+    turtle.forward(500)
+    a=a+1
+turtle.exitonclick()

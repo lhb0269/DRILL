@@ -23,4 +23,3 @@ while(a<5):
     turtle.pendown()
     turtle.forward(500)
     a=a+1
-turtle.exitonclick()

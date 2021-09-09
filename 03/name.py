@@ -70,5 +70,4 @@ turtle.goto(360,180)
 turtle.right(30)
 turtle.pendown()
 turtle.forward(100)
-turtle.exitonclick()
 

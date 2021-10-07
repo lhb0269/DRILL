@@ -27,16 +27,14 @@ def charcter_move():
     global object_y
     global objectinit
     global move_code
-    if(x<object_x):
-        x+=1
-        move_code=0
-    if (x > object_x):
-        x -= 1
-        move_code=1
-    if (y < object_y):
-        y += 1
-    if (y > object_y):
-        y -= 1
+    t= 0.01
+    x = (1 - t) * x + t * object_x
+    y = (1 - t) * y + t * object_y
+
+    dist = (object_x-x)**2 +(object_y-y)**2
+    if(dist < 10**2):
+        object_x = randint(0, 1280)
+        object_y = randint(0, 1024)
     if(x==object_x and y==object_y):
         objectinit=False
 def animation():

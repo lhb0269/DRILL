@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36f8d353-1207-4939-a559-4098e5e44b07" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/DRILL#07.py" beforeDir="false" afterPath="$PROJECT_DIR$/DRILL#07.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +21,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../professor_repository/Labs/Lecture07_Linear_Movement" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../first_project" />
   </component>
   <component name="RunManager">
     <configuration name="DRILL#07" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">

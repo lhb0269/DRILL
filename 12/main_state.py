@@ -37,7 +37,7 @@ def enter():
     game_world.add_object(grass, 0)
 
     global bird
-    bird = [Bird(),Bird(),Bird(),Bird(),Bird()]
+    bird = [Bird() for i in range(5)]
     game_world.add_objects(bird,1)
     # fill here for balls
 

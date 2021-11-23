@@ -20,7 +20,7 @@ class Bird:
     def __init__(self):
         if Bird.image == None:
             Bird.image = load_image('bird100x100x14.png')
-        self.x, self.y,self.velocity = random.randint(0, 1600-1), 400,1
+        self.x, self.y,self.velocity = random.randint(0, 1600-1), 400,random.randint(-1,1)
         self.frame = 0
 
     def get_bb(self):

@@ -1,7 +1,8 @@
 import game_framework
 from pico2d import *
 from ball import Ball
-
+import collision
+import server
 import game_world
 
 # Boy Run Speed
@@ -83,10 +84,7 @@ class RunState:
 
     def do(boy):
         boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
-        if boy.x+boy.velocity < boy.canXmin and boy.x+boy.velocity > boy.canXmax:
-            self.velocity*=-1
-        if boy.x > boy.canXmin and boy.x < boy.canXmax:
-            boy.x += boy.velocity * game_framework.frame_time
+        boy.x += boy.velocity * game_framework.frame_time
         boy.x = clamp(25, boy.x, 1600 - 25)
 
     def draw(boy):
@@ -134,7 +132,7 @@ class Boy:
         self.image = load_image('animation_sheet.png')
         self.font = load_font('ENCR10B.TTF', 16)
         self.dir = 1
-        self.canXmin,self.canXmax = 0,1200
+        self.parent = None
         self.stand = False
         self.velocity = 0
         self.frame = 0
@@ -162,16 +160,14 @@ class Boy:
             self.cur_state.exit(self, event)
             self.cur_state = next_state_table[self.cur_state][event]
             self.cur_state.enter(self, event)
+        if self.parent:
+            self.x += self.parent.speed * game_framework.frame_time
+            self.x = clamp(self.parent.x-90,self.x,self.parent.x+90)
+        for brick in server.bricks:
+           if collision.collide(self,brick):
+                self.set_parent(brick)
+                break
 
-    def collidewithbrick(self,brick):
-        if brick.setboy == False:
-            self.x = brick.x
-            self.y = brick.y+50
-            brick.setboy = True
-        elif brick.setboy == True:
-            self.canXmin, self.canXmax = brick.x - 90, brick.x + 90
-        if self.stand == True:
-            self.x = brick.x
     def draw(self):
         self.cur_state.draw(self)
         self.font.draw(self.x - 60, self.y + 50, '(Time: %3.2f)' % get_time(), (255, 255, 0))
@@ -182,4 +178,6 @@ class Boy:
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
             self.add_event(key_event)
-
+    def set_parent(self,brick):
+        self.parent = brick
+        self.x,self.y = brick.x+brick.BOY_X0,brick.y+brick.BOY_Y0
